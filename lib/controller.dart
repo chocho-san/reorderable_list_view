@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:reorderable_list/model.dart';
 
 class Controller with ChangeNotifier {
   List<Model> modelList = List.generate(
@@ -18,14 +19,4 @@ class Controller with ChangeNotifier {
     modelList.insert(newIndex, model);
     notifyListeners();
   }
-}
-
-class Model {
-  final String title;
-  final String key;
-
-  Model({
-    @required this.title,
-    @required this.key,
-  });
 }

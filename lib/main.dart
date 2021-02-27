@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'List',
       theme:  ThemeData(
-          primaryColor: Color.fromRGBO(12,84,110, 1),
+        brightness: Brightness.dark,
+        primaryColorBrightness: Brightness.dark,
       ),
       home: ChangeNotifierProvider<Controller>(
         create: (_) => Controller(),
