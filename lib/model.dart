@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 
 class Model {
   final String title;
-  final String key;
+  final Key key;
 
   Model({
-    @required this.title,
-    @required this.key,
+     this.title,
+     this.key,
   });
 }

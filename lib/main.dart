@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:reorderable_list/controller.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reorderable_list/list_screen.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(
+    ProviderScope(
+      child: MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -16,10 +21,8 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primaryColorBrightness: Brightness.dark,
       ),
-      home: ChangeNotifierProvider<Controller>(
-        create: (_) => Controller(),
-        child: SimpleScreen(),
-      ),
+      home: SimpleScreen(),
+
     );
   }
 }

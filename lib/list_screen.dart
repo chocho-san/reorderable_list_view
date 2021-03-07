@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reorderable_list/controller.dart';
 
 class SimpleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<Controller>(
-      builder: (_, controller, __) {
+    return Consumer(
+      builder: (context, watch,child) {
+        final controller = watch(controllerProvider);
         return Stack(
           children: [
             Container(
@@ -22,21 +23,10 @@ class SimpleScreen extends StatelessWidget {
                 ],
               )),
             ),
-            CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  backgroundColor: const Color(0x00000000),
-                  elevation: 0.0,
-                  centerTitle: true,
-                  stretch: true,
-                  title: Text('Long Press & Drag'),
-                ),
-              ],
-            ),
             Scaffold(
-              backgroundColor: const Color(0x00000000),
+              backgroundColor:  Colors.transparent,
               appBar: AppBar(
-                backgroundColor: const Color(0x00000000),
+                backgroundColor:  Colors.transparent,
                 elevation: 0.0,
                 centerTitle: true,
                 title: Text('Long Press & Drag'),
@@ -51,16 +41,16 @@ class SimpleScreen extends StatelessWidget {
                   },
                   children: controller.modelList.map((model) {
                     return Container(
-                      margin: const EdgeInsets.symmetric(
+                      margin:  EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 5.0),
-                      padding: const EdgeInsets.symmetric(
+                      padding:  EdgeInsets.symmetric(
                           horizontal: 15.0, vertical: 10.0),
                       height: 70,
                       decoration: BoxDecoration(
                         color: Colors.grey.shade100.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(5.0),
                       ),
-                      key: Key(model.key),
+                      key:model.key,
                       child: Center(
                         child: Text(
                           model.title,
