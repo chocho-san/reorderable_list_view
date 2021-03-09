@@ -14,6 +14,8 @@ class Controller with ChangeNotifier {
     ),
   );
 
+
+  //ReorderableListView用
   void newList(int oldIndex, int newIndex) {
     if (oldIndex < newIndex) {
       newIndex -= 1;
@@ -25,7 +27,7 @@ class Controller with ChangeNotifier {
 
 
 
-
+  //flutter_reorderable_list package 用
   int _indexOfKey(Key key) {
     return items.indexWhere((TileData d) => d.key == key);
   }
@@ -34,9 +36,6 @@ class Controller with ChangeNotifier {
     int draggingIndex = _indexOfKey(item);
     int newPositionIndex = _indexOfKey(newPosition);
 
-    // Uncomment to allow only even target reorder possition
-    // if (newPositionIndex % 2 == 1)
-    //   return false;
 
     final draggedTile = items[draggingIndex];
 

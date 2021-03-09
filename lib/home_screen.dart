@@ -3,7 +3,7 @@ import 'package:reorderable_list/handle/handle_list.dart';
 import 'package:reorderable_list/long_press/longpress_list.dart';
 
 class HomeScreen extends StatelessWidget {
-  final List<String> _tabs = ['longpress&drag', 'handleList'];
+  final List<String> _tabs = ['長押し', 'ハンドル'];
 
   @override
   Widget build(BuildContext context) {
@@ -12,22 +12,22 @@ class HomeScreen extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                begin: FractionalOffset.topCenter,
-                end: FractionalOffset.bottomCenter,
-                colors: [
-                  Color.fromARGB(255, 62, 43, 255),
-                  Color.fromARGB(255, 49, 101, 255),
-                  Color.fromARGB(255, 69, 207, 255),
-                ],
-              )),
+            begin: FractionalOffset.topCenter,
+            end: FractionalOffset.bottomCenter,
+            colors: [
+              Color.fromARGB(255, 62, 43, 255),
+              Color.fromARGB(255, 49, 101, 255),
+              Color.fromARGB(255, 69, 207, 255),
+            ],
+          )),
         ),
         DefaultTabController(
           length: _tabs.length,
           child: Scaffold(
             appBar: AppBar(
               backgroundColor: Color.fromARGB(255, 62, 43, 255),
-              title: Text(
-                  'Reorderable'),
+              centerTitle: true,
+              title: Text('Reorderable'),
             ),
             // child: NestedScrollView(
             //   headerSliverBuilder:
@@ -57,17 +57,27 @@ class HomeScreen extends StatelessWidget {
             //       ),
             //     ];
             //   },
-            bottomNavigationBar: Container(
-              height: 70,
-              child: TabBar(
+            bottomNavigationBar: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+                height: 50,
+                child: TabBar(
+                  indicator: BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                      Colors.white,
+                      Color.fromARGB(255, 207, 243, 245)
+                    ]),
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  unselectedLabelColor: Colors.white,
+                  labelColor:               Color.fromARGB(255, 69, 207, 255),
 
-                labelColor: Colors.white,
-                indicatorPadding: EdgeInsets.all(5.0),
-                indicatorColor: Colors.white,
-                labelStyle: TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.bold),
-                unselectedLabelStyle: TextStyle(fontSize: 17),
-                tabs: _tabs.map((String name) => Tab(text: name)).toList(),
+                  indicatorPadding: EdgeInsets.all(5.0),
+                  labelStyle:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  unselectedLabelStyle: TextStyle(fontSize: 17),
+                  tabs: _tabs.map((String name) => Tab(text: name)).toList(),
+                ),
               ),
             ),
             body: Theme(
